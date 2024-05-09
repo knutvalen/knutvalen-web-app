@@ -1,30 +1,31 @@
+import { ReactNode } from "react";
 import type { Metadata } from "next";
 import { inter, robotoMono } from "@/app/styles/fonts";
 import { ThemeProvider } from "@/app/styles/ThemeProvider";
 import { Header } from "@/app/composistions/Header";
-import { Footer } from "@/app/composistions/Footer";
-import { StyledComponentsRegistry } from "@/app/styles/StyledComponentsRegistry";
+import { Registry } from "@/app/styles/Registry";
 import { hasConsentCookie } from "@/app/serverActions";
 import { CookieConsent } from "@/app/composistions/CookieConsent";
 import { FirebaseProvider } from "@/app/api/FirebaseProvider";
-import { ReactNode } from "react";
 
 export const metadata: Metadata = {
   title: "Knut Valen",
 };
 
-const RootLayout = ({ children }: { children: ReactNode }) => {
+const RootLayout = async ({ children }: { children: ReactNode }) => {
+  const consent = await hasConsentCookie();
+
   return (
     <html lang="en" className={`${inter.variable} ${robotoMono.variable}`}>
       <body>
         <FirebaseProvider>
-          <StyledComponentsRegistry>
+          <Registry>
             <ThemeProvider>
               <Header />
               {children}
-              {!hasConsentCookie() && <CookieConsent />}
+              {!consent && <CookieConsent />}
             </ThemeProvider>
-          </StyledComponentsRegistry>
+          </Registry>
         </FirebaseProvider>
       </body>
     </html>

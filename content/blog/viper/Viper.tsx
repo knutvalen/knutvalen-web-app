@@ -104,7 +104,7 @@ export const Viper = () => {
         between the view controllers.
       </Paragraph>
       <DemoImageWrapper>
-        <Image src={giphy} alt={"Demo of the app."} />
+        <Image src={giphy} alt={"Demo of the app."} unoptimized />
       </DemoImageWrapper>
       <Paragraph>
         We have two VIPER modules in our app: the light-side screen and the
@@ -117,8 +117,10 @@ export const Viper = () => {
         a protocol for each VIPER part:
       </Paragraph>
       <CodeWrapper>
+        {/* prettier-ignore */}
         <CodeBlock>
-          {`import UIKit
+          {
+`import UIKit
 
 protocol LightSideScreenViewType {
     var presenter: LightSideScreenPresenterType? { get set }
@@ -159,7 +161,8 @@ protocol LightSideScreenRouterType {
 }
 
 typealias JediCodeResponse = (_ jediCode: LightSideScreenEntityType.JediCode?, _ error: LightSideScreenEntityType.Error?) -> Void
-typealias JediListResponse = (_ jediList: [LightSideScreenEntityType.Jedi]?, _ error: LightSideScreenEntityType.Error?) -> Void`}
+typealias JediListResponse = (_ jediList: [LightSideScreenEntityType.Jedi]?, _ error: LightSideScreenEntityType.Error?) -> Void`
+          }
         </CodeBlock>
       </CodeWrapper>
       <Paragraph>
@@ -201,16 +204,19 @@ typealias JediListResponse = (_ jediList: [LightSideScreenEntityType.Jedi]?, _ e
         <InlineCode>LightSideScreenRouter.swift</InlineCode>.
       </Paragraph>
       <CodeWrapper>
+        {/* prettier-ignore */}
         <CodeBlock>
-          {`import UIKit
+          {
+`import UIKit
 
 class LightSideScreenRouter: LightSideScreenRouterType {
     ...
-}`}
+}`
+          }
         </CodeBlock>
       </CodeWrapper>
       <Paragraph>
-        All VIPER parts have its own type, and here you can see that the
+        All VIPER parts have its own type, and here you can see that the{" "}
         <InlineCode>LightSideScreenRouter</InlineCode> inherits from the{" "}
         <InlineCode>LightSideScreenRouterType</InlineCode>. In the{" "}
         <InlineCode>create()</InlineCode> function of the{" "}
@@ -218,8 +224,10 @@ class LightSideScreenRouter: LightSideScreenRouterType {
         up and returns its View.
       </Paragraph>
       <CodeWrapper>
+        {/* prettier-ignore */}
         <CodeBlock>
-          {`class LightSideScreenRouter: LightSideScreenRouterType {
+          {
+`class LightSideScreenRouter: LightSideScreenRouterType {
     static func create() -> UIViewController {
         let storyboard = UIStoryboard(name: "LightSideScreenView", bundle: .main)
 
@@ -255,7 +263,8 @@ class LightSideScreenRouter: LightSideScreenRouterType {
         }
     }
 
-}`}
+}`
+          }
         </CodeBlock>
       </CodeWrapper>
       <Paragraph>
@@ -266,8 +275,10 @@ class LightSideScreenRouter: LightSideScreenRouterType {
         function.
       </Paragraph>
       <CodeWrapper>
+        {/* prettier-ignore */}
         <CodeBlock>
-          {`class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+          {
+`class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
     func scene(
@@ -287,7 +298,8 @@ class LightSideScreenRouter: LightSideScreenRouterType {
         self.window = window
     }
 
-}`}
+}`
+          }
         </CodeBlock>
       </CodeWrapper>
       <Paragraph>
@@ -311,11 +323,10 @@ class LightSideScreenRouter: LightSideScreenRouterType {
       </ImageWrapper>
       <Paragraph>
         Here you’ll find the files{" "}
-        <InlineCode>LightSideScreenView.swift</InlineCode> and
+        <InlineCode>LightSideScreenView.swift</InlineCode> and{" "}
         <InlineCode>LightSideScreenView.storyboard</InlineCode> that together
-        implements the View. The
-        <InlineCode>LightSideScreenView</InlineCode> class implements{" "}
-        <InlineCode>UIViewController</InlineCode>,
+        implements the View. The <InlineCode>LightSideScreenView</InlineCode>{" "}
+        class implements <InlineCode>UIViewController</InlineCode>,{" "}
         <InlineCode>UICollectionViewDataSource</InlineCode> and{" "}
         <InlineCode>UICollectionViewDelegateFlowLayout</InlineCode> for showing
         its list of Jedi, and the{" "}
@@ -323,8 +334,10 @@ class LightSideScreenRouter: LightSideScreenRouterType {
         VIPER type.
       </Paragraph>
       <CodeWrapper>
+        {/* prettier-ignore */}
         <CodeBlock>
-          {`import UIKit
+          {
+`import UIKit
 
 class LightSideScreenView: UIViewController {
     ...
@@ -340,28 +353,31 @@ extension LightSideScreenView: UICollectionViewDataSource {
 
 extension LightSideScreenView: UICollectionViewDelegateFlowLayout {
     ...
-}`}
+}`
+          }
         </CodeBlock>
       </CodeWrapper>
       <Paragraph>
         When the Router returns its view controller in its{" "}
         <InlineCode>create()</InlineCode> function, the view controller’s{" "}
         <InlineCode>viewDidLoad()</InlineCode> function will be invoked. Next,
-        the
-        <InlineCode>viewDidAppear(_:)</InlineCode> function will be invoked and
-        this is where we invoke the Presenter’s{" "}
+        the <InlineCode>viewDidAppear(_:)</InlineCode> function will be invoked
+        and this is where we invoke the Presenter’s{" "}
         <InlineCode>viewDidAppear()</InlineCode> function.
       </Paragraph>
       <CodeWrapper>
+        {/* prettier-ignore */}
         <CodeBlock>
-          {`override func viewDidLoad() {
+          {
+`override func viewDidLoad() {
     ...
 }
 
 override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     presenter?.viewDidAppear()
-}`}
+}`
+          }
         </CodeBlock>
       </CodeWrapper>
       <Paragraph>
@@ -376,13 +392,16 @@ override func viewDidAppear(_ animated: Bool) {
         display and it is responsible for using the Router.
       </Paragraph>
       <CodeWrapper>
+        {/* prettier-ignore */}
         <CodeBlock>
-          {`func viewDidAppear() {
+          {
+`func viewDidAppear() {
     view?.set(loading: true)
     interactorIsLoading = ["onJediCode": true, "onJediList": true]
     interactor?.getCode(completionHandler: onJediCode, useCache: true)
     interactor?.getJediList(completionHandler: onJediList, useCache: true)
-}`}
+}`
+          }
         </CodeBlock>
       </CodeWrapper>
       <Paragraph>
@@ -396,8 +415,10 @@ override func viewDidAppear(_ animated: Bool) {
         handlers.
       </Paragraph>
       <CodeWrapper>
+        {/* prettier-ignore */}
         <CodeBlock>
-          {`private func onJediCode(
+          {
+`private func onJediCode(
     _ jediCode: LightSideScreenEntityType.JediCode?,
     _ error: LightSideScreenEntityType.Error?)
 {
@@ -418,7 +439,8 @@ private func onJediList(
         lightSideScreenJediList = jediList
         view?.refreshJediList()
     }
-}`}
+}`
+          }
         </CodeBlock>
       </CodeWrapper>
       <Paragraph>
@@ -442,12 +464,15 @@ private func onJediList(
         so that the data can be displayed:
       </Paragraph>
       <CodeWrapper>
+        {/* prettier-ignore */}
         <CodeBlock>
-          {`private func onLoaded(function: String) {
+          {
+`private func onLoaded(function: String) {
     ...
     view?.set(loading: false)
     ...
-}`}
+}`
+          }
         </CodeBlock>
       </CodeWrapper>
       <Paragraph>
@@ -459,10 +484,13 @@ private func onJediList(
         <InlineCode>routeToDarkSideScreen(from:)</InlineCode> function.
       </Paragraph>
       <CodeWrapper>
+        {/* prettier-ignore */}
         <CodeBlock>
-          {`func onDarkSideSelected() {
+          {
+`func onDarkSideSelected() {
     router?.routeToDarkSideScreen(from: view)
-}`}
+}`
+          }
         </CodeBlock>
       </CodeWrapper>
       <Paragraph>
@@ -477,9 +505,11 @@ private func onJediList(
         - typically through network HTTP requests - to load the data needed for
         the Presenter to handle.
       </Paragraph>
+      {/* prettier-ignore */}
       <CodeWrapper>
         <CodeBlock>
-          {`class LightSideScreenInteractor {
+          {
+`class LightSideScreenInteractor {
     ...
 }
 
@@ -508,7 +538,8 @@ extension LightSideScreenInteractor: LightSideScreenInteractorType {
     }
 
     ...
-}`}
+}`
+          }
         </CodeBlock>
       </CodeWrapper>
       <Paragraph>
@@ -516,10 +547,13 @@ extension LightSideScreenInteractor: LightSideScreenInteractorType {
         caches it in the Entity:
       </Paragraph>
       <CodeWrapper>
+        {/* prettier-ignore */}
         <CodeBlock>
-          {`case let .success(jediList):
+          {
+`case let .success(jediList):
     self.entity?.jediList = jediList
-    completionHandler(jediList, nil)`}
+    completionHandler(jediList, nil)`
+          }
         </CodeBlock>
       </CodeWrapper>
       <Paragraph>
@@ -527,14 +561,17 @@ extension LightSideScreenInteractor: LightSideScreenInteractorType {
         the Entity:
       </Paragraph>
       <CodeWrapper>
+        {/* prettier-ignore */}
         <CodeBlock>
-          {`protocol LightSideScreenEntityType {
+          {
+`protocol LightSideScreenEntityType {
     typealias JediCode = CodeModel
     typealias Jedi = JediModel
     typealias Error = ErrorResponse
     var jediCode: JediCode? { get set }
     var jediList: [Jedi]? { get set }
-}`}
+}`
+          }
         </CodeBlock>
       </CodeWrapper>
       <Paragraph>
@@ -547,13 +584,16 @@ extension LightSideScreenInteractor: LightSideScreenInteractorType {
         doing a lengthy network request:
       </Paragraph>
       <CodeWrapper>
+        {/* prettier-ignore */}
         <CodeBlock>
-          {`if let cache = entity?.jediList,
+          {
+`if let cache = entity?.jediList,
     useCache == true
 {
     completionHandler(cache, nil)
     return
-}`}
+}`
+          }
         </CodeBlock>
       </CodeWrapper>
       <Heading2>Wrapping up</Heading2>

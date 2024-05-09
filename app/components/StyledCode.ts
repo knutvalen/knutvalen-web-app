@@ -1,14 +1,15 @@
 import styled from "styled-components";
 
-export const StyledCode = styled.code`
+export const StyledCode = styled.code<{ $isOutput?: boolean }>`
   overflow-x: auto;
-  font-family: var(--font-roboto-mono);
+  font-family: ${(props) =>
+    props.$isOutput ? `var(--sf-mono)` : `var(--font-roboto-mono)`};
   font-weight: ${(props) => props.theme.weights.normal};
   color: ${(props) => props.theme.colors.black};
-  background-color: ${(props) => props.theme.colors.grey[100]};
+  background-color: ${(props) => props.theme.colors.grey[50]};
 
   @media ${(props) => props.theme.queries.prefersDarkTheme} {
     color: ${(props) => props.theme.colors.white};
-    background-color: ${(props) => props.theme.colors.grey[900]};
+    background-color: ${(props) => props.theme.colors.grey[950]};
   }
 `;
