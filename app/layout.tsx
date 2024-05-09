@@ -22,7 +22,6 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
             <ThemeProvider>
               <Header />
               {children}
-              <Footer currentYear={new Date().getFullYear()} />
               {!hasConsentCookie() && <CookieConsent />}
             </ThemeProvider>
           </StyledComponentsRegistry>
