@@ -95,10 +95,10 @@ export const StyledComponents = () => {
           Styled Components
         </StyledLink>{" "}
         is a CSS-in-JS solution where every style is also a{" "}
-        <StyledLink href={"https://react.dev/"}>React</StyledLink> component. I
+        <StyledLink href={"https://react.dev"}>React</StyledLink> component. I
         absolutely love working with it, and I&apos;ll show you how you can get
         started with it in your{" "}
-        <StyledLink href={"https://nextjs.org/"}>Next.js</StyledLink> React app
+        <StyledLink href={"https://nextjs.org"}>Next.js</StyledLink> web app
         using{" "}
         <StyledLink href={"https://nextjs.org/docs/app"}>App Router</StyledLink>{" "}
         and{" "}

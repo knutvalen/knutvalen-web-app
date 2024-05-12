@@ -12,8 +12,7 @@ export const metadataForBlogPosts: BlogPostMetadata[] = [
     title: "Styled Components with Next.js and TypeScript",
     author: "Knut Valen",
     published: new Date(2024, 4, 12),
-    introduction:
-      "Get started with Styled Components in your React web app using Next.js.",
+    introduction: "Get started with Styled Components in your Next.js web app.",
     slug: "styled-components",
   },
   {
