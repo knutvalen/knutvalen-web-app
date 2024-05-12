@@ -29,10 +29,6 @@ const ButtonWrapper = styled.div`
   flex: 1;
 `;
 
-const Filler = styled.div`
-  flex: 1;
-`;
-
 export const Posts = () => {
   const router = useRouter();
   const blogList: Array<ReactNode> = [];
