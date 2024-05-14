@@ -49,7 +49,6 @@ const Card = styled(StyledCard)`
   box-shadow: ${(props) => props.theme.elevations.large};
   background-color: ${(props) => props.theme.colors.primary.dark};
   will-change: transform;
-
   animation: ${slideInFromLeft} 500ms ease-out both;
   animation-delay: ${delayToDisplay}ms;
 
