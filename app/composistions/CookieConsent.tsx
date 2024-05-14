@@ -106,7 +106,7 @@ export const CookieConsent = () => {
         </H2>
         <P>
           This website use cookies. The cookies is used for analyzing the
-          website traffic and for providing basic necessary features.
+          website traffic and providing basic necessary features.
         </P>
         <ButtonContainer>
           <StyledButton
