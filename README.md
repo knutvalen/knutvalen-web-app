@@ -1,6 +1,6 @@
 # Knut Valen Web App
 
-Web app for https://knutvalen.no.
+Web app for https://knutvalen.dev.
 
 ## Getting started
 
