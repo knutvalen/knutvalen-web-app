@@ -18,11 +18,11 @@ npm run dev
 
 ## CI/CD
 
-The app is deployed using Github Actions at [Github](https://github.com/knutvalen/knutvalen-web-app)
+Github Actions at [Github](https://github.com/knutvalen/knutvalen-web-app)
 
 ## Project management
 
-[Jira](https://knutvalen.atlassian.net/jira)
+Kanban board at [Jira](https://knutvalen.atlassian.net/jira)
 
 ## Content
 
