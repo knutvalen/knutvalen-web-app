@@ -35,8 +35,11 @@ const HeadingWrapper = styled.div`
 `;
 
 const Heading3 = styled(StyledHeading3)`
-  font-family: var(--font-roboto-mono);
+  font-family: var(--font-roboto-mono), sans-serif;
   font-weight: ${(props) => props.theme.weights.normal};
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 `;
 
 const StyledCopy = styled(Copy)`
@@ -111,7 +114,7 @@ export const CodeWrapper = ({ title, copy, children }: Props) => {
       return () => clearTimeout(timeout);
     }
   }, [isCopied]);
-  // TODO: kopi-knappen vises ikke på mobil når title er lang
+
   return (
     <Wrapper>
       <HeadingWrapper>

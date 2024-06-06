@@ -24,6 +24,7 @@ const core = css`
   width: fit-content;
   height: fit-content;
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   border: none;
   text-transform: uppercase;
