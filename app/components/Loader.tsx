@@ -97,7 +97,7 @@ const medium = css`
 
 const large = css`
   --size: 96px;
-  
+
   &:before {
     border-width: 2px;
   }
@@ -130,4 +130,6 @@ const SlinkyRotator = styled.div<{
     ${rotate} 2000ms linear infinite;
 `;
 
-export const Loader = ({ size }: { size: Size }) => <SlinkyRotator $size={size} />;
+export const Loader = ({ size }: { size: Size }) => (
+  <SlinkyRotator $size={size} />
+);
