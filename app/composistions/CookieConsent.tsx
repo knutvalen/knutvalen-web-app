@@ -109,7 +109,7 @@ export const CookieConsent = () => {
         </P>
         <ButtonContainer>
           <StyledButton
-            variant={"primary"}
+            variant={"contained"}
             size={"medium"}
             onClick={() => setConsentCookie({ consent: true })}
           >

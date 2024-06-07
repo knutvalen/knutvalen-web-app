@@ -46,7 +46,7 @@ export const Posts = () => {
         <ButtonWrapper>
           <Button
             onClick={() => onClick(blogPost.slug)}
-            variant={"primary"}
+            variant={"contained"}
             size={"medium"}
           >
             Read more

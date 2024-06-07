@@ -119,7 +119,7 @@ export const CodeWrapper = ({ title, copy, children }: Props) => {
     <Wrapper>
       <HeadingWrapper>
         {title ? <Heading3>{title}</Heading3> : <Filler />}
-        <Button size={"small"} variant={"ghost"} onClick={onClick}>
+        <Button size={"small"} variant={"text"} onClick={onClick}>
           <StyledCopy />
           <CopiedWrapper $show={isCopied}>
             <StyledCheck />
