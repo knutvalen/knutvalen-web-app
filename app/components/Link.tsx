@@ -1,11 +1,11 @@
-import { ButtonVariant } from "@/app/types/ButtonVariant";
-import { ButtonSize } from "@/app/types/ButtonSize";
+import { ButtonVariant } from "@/app/models/ButtonVariant";
+import { Size } from "@/app/models/Size";
 import { AnchorHTMLAttributes } from "react";
 import { StyledLink } from "@/app/components/StyledLink";
 
 interface Props extends AnchorHTMLAttributes<HTMLAnchorElement> {
   href: string;
-  size: ButtonSize;
+  size: Size;
   variant: ButtonVariant;
 }
 

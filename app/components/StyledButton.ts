@@ -1,24 +1,6 @@
 import styled, { css } from "styled-components";
-import { ButtonSize } from "@/app/types/ButtonSize";
-import { ButtonVariant } from "@/app/types/ButtonVariant";
-
-const small = css`
-  font-size: ${16 / 16}rem;
-  padding: 6px 12px;
-  border-radius: 2px;
-`;
-
-const medium = css`
-  font-size: ${18 / 16}rem;
-  padding: 14px 20px;
-  border-radius: 2px;
-`;
-
-const large = css`
-  font-size: ${21 / 16}rem;
-  padding: 18px 32px;
-  border-radius: 4px;
-`;
+import { Size } from "@/app/models/Size";
+import { ButtonVariant } from "@/app/models/ButtonVariant";
 
 const core = css`
   width: fit-content;
@@ -96,7 +78,25 @@ const core = css`
   }
 `;
 
-const primary = css`
+const small = css`
+  font-size: ${16 / 16}rem;
+  padding: 6px 12px;
+  border-radius: 2px;
+`;
+
+const medium = css`
+  font-size: ${18 / 16}rem;
+  padding: 14px 20px;
+  border-radius: 2px;
+`;
+
+const large = css`
+  font-size: ${21 / 16}rem;
+  padding: 18px 32px;
+  border-radius: 4px;
+`;
+
+const contained = css`
   ${core};
   color: ${(props) => props.theme.colors.black};
   background: linear-gradient(
@@ -112,25 +112,6 @@ const primary = css`
       to bottom right,
       ${(props) => props.theme.colors.primary.normal},
       ${(props) => props.theme.colors.primary.dark}
-    );
-  }
-`;
-
-const secondary = css`
-  ${core};
-  color: ${(props) => props.theme.colors.black};
-  background: linear-gradient(
-    to bottom right,
-    ${(props) => props.theme.colors.secondary.light},
-    ${(props) => props.theme.colors.secondary.normal}
-  );
-
-  @media ${(props) => props.theme.queries.prefersDarkTheme} {
-    color: ${(props) => props.theme.colors.white};
-    background: linear-gradient(
-      to bottom right,
-      ${(props) => props.theme.colors.secondary.normal},
-      ${(props) => props.theme.colors.secondary.dark}
     );
   }
 `;
@@ -157,7 +138,7 @@ const outlined = css`
   }
 `;
 
-const ghost = css`
+const text = css`
   ${core};
   color: ${(props) => props.theme.colors.primary.normal};
   background-color: transparent;
@@ -180,7 +161,7 @@ const ghost = css`
   }
 `;
 
-export const sizeStyles = (size: ButtonSize) =>
+export const sizeStyles = (size: Size) =>
   ({
     small: small,
     medium: medium,
@@ -189,14 +170,13 @@ export const sizeStyles = (size: ButtonSize) =>
 
 export const variantStyles = (variant: ButtonVariant) =>
   ({
-    primary: primary,
-    secondary: secondary,
+    contained: contained,
     outlined: outlined,
-    ghost: ghost,
+    text: text,
   })[variant];
 
 export const StyledButton = styled.button<{
-  $size: ButtonSize;
+  $size: Size;
   $variant: ButtonVariant;
 }>`
   ${(props) => sizeStyles(props.$size)}

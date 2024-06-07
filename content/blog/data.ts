@@ -1,5 +1,5 @@
 import { Viper } from "@/content/blog/viper/Viper";
-import { BlogPostMetadata } from "@/app/types/BlogPostMetadata";
+import { BlogPostMetadata } from "@/app/models/BlogPostMetadata";
 import { StyledComponents } from "@/content/blog/styledComponents/StyledComponents";
 
 export const slugs = {

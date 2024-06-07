@@ -1,10 +1,10 @@
-import { ButtonVariant } from "@/app/types/ButtonVariant";
-import { ButtonSize } from "@/app/types/ButtonSize";
+import { ButtonVariant } from "@/app/models/ButtonVariant";
+import { Size } from "@/app/models/Size";
 import { ButtonHTMLAttributes } from "react";
 import { StyledButton } from "@/app/components/StyledButton";
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
-  size: ButtonSize;
+  size: Size;
   variant: ButtonVariant;
 }
 

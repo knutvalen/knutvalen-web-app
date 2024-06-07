@@ -1,5 +1,5 @@
 import { metadataForBlogPosts, slugs } from "@/content/blog/data";
-import { BlogPostMetadata } from "@/app/types/BlogPostMetadata";
+import { BlogPostMetadata } from "@/app/models/BlogPostMetadata";
 
 export interface Props {
   slug: keyof typeof slugs;
