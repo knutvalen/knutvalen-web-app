@@ -3,10 +3,11 @@
 import styled, { keyframes } from "styled-components";
 import { Info, Check } from "react-feather";
 import { Button } from "@/app/components/Button";
-import { setConsentCookie } from "@/app/serverActions";
 import { StyledCard } from "@/app/components/StyledCard";
 import { StyledHeading2 } from "@/app/components/StyledHeading2";
 import { StyledParagraph } from "@/app/components/StyledParagraph";
+import { useCookiesContext } from "@/app/CookiesProvider";
+import { setCookies } from "@/app/serverActions";
 
 const delayToDisplay = 1500;
 
@@ -24,7 +25,9 @@ const Wrapper = styled.div`
 
 const ButtonContainer = styled.div`
   display: flex;
-  justify-content: flex-end;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+  gap: 8px;
 `;
 
 const slideInFromLeft = keyframes`
@@ -96,7 +99,17 @@ const StyledButton = styled(Button)`
   gap: 8px;
 `;
 
+const TextButton = styled(Button)`
+  color: ${(props) => props.theme.colors.white};
+
+  @media ${(props) => props.theme.queries.prefersDarkTheme} {
+    color: ${(props) => props.theme.colors.black};
+  }
+`;
+
 export const CookieConsent = () => {
+  const { setPreferencesOpen } = useCookiesContext();
+
   return (
     <Wrapper>
       <Card>
@@ -111,11 +124,25 @@ export const CookieConsent = () => {
           <StyledButton
             variant={"contained"}
             size={"medium"}
-            onClick={() => setConsentCookie({ consent: true })}
+            onClick={() =>
+              setCookies([
+                { name: "necessary", consent: true },
+                { name: "googleAnalytics", consent: true },
+              ])
+            }
           >
             <StyledCheck />
             <span>ok</span>
           </StyledButton>
+          <TextButton
+            size={"medium"}
+            variant={"text"}
+            onClick={() => {
+              setPreferencesOpen(true);
+            }}
+          >
+            Preferences
+          </TextButton>
         </ButtonContainer>
       </Card>
     </Wrapper>

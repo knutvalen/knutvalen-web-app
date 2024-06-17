@@ -38,6 +38,7 @@ const Link = styled(NextLink)`
 `;
 
 const Text = styled(StyledSpan)`
+  user-select: none;
   font-weight: ${(props) => props.theme.weights.mediumSmall};
   font-size: ${40 / 16}rem;
   padding: 0 32px;
