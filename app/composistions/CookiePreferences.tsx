@@ -17,7 +17,8 @@ const Overlay = styled(Dialog.Overlay)`
   bottom: 0;
   display: flex;
   justify-content: center;
-  backdrop-filter: blur(8px) brightness(80%);
+  //backdrop-filter: blur(8px) brightness(50%);
+  background-color: hsl(0 0% 0% / 0.5);
 `;
 
 const Content = styled(Dialog.Content)`
