@@ -14,8 +14,6 @@ const core = css`
   transition:
     box-shadow 400ms,
     transform 400ms;
-  -webkit-tap-highlight-color: transparent;
-  -webkit-user-select: none;
   user-select: none;
   cursor: pointer;
 
