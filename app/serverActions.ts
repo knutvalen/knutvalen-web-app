@@ -2,12 +2,8 @@
 
 import { cookies } from "next/headers";
 import { ReadonlyRequestCookies } from "next/dist/server/web/spec-extension/adapters/request-cookies";
-
-type cookieNames = "necessary" | "googleAnalytics";
-export type Cookie = {
-  name: cookieNames;
-  consent: boolean;
-};
+import { Cookie } from "@/app/models/Cookie";
+import { CookieNames } from "@/app/models/CookieNames";
 
 export const setCookies = async (_cookies: Cookie[]) => {
   const cookieStore = cookies();
@@ -25,19 +21,19 @@ export const getAllCookies = async (): Promise<Cookie[]> => {
   const cookieStore = cookies();
 
   return cookieStore.getAll().map((cookie) => ({
-    name: cookie.name as cookieNames,
+    name: cookie.name as CookieNames,
     consent: cookie.value === "true",
   }));
 };
 
 export const getCookie = async (
-  name: cookieNames,
+  name: CookieNames,
   cookieStore: ReadonlyRequestCookies,
 ): Promise<Cookie | undefined> => {
   const cookie = cookieStore.get(name);
   if (cookie) {
     return {
-      name: cookie.name as cookieNames,
+      name: cookie.name as CookieNames,
       consent: cookie.value === "true",
     };
   }
@@ -46,7 +42,7 @@ export const getCookie = async (
 };
 
 export const hasCookie = async (
-  name: cookieNames,
+  name: CookieNames,
   cookieStore: ReadonlyRequestCookies,
 ): Promise<boolean> => {
   return cookieStore.has(name);

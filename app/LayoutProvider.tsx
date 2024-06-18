@@ -8,7 +8,7 @@ import {
   isSupported,
   setAnalyticsCollectionEnabled,
 } from "@firebase/analytics";
-import { Cookie } from "@/app/serverActions";
+import { Cookie } from "@/app/models/Cookie";
 
 export const LayoutProvider = ({
   children,
