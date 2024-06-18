@@ -10,14 +10,12 @@ export const slugs = {
 export const metadataForBlogPosts: BlogPostMetadata[] = [
   {
     title: "Styled Components with Next.js and TypeScript",
-    author: "Knut Valen",
     published: new Date(2024, 4, 12),
     introduction: "Get started with Styled Components in your Next.js web app.",
     slug: "styled-components",
   },
   {
     title: "VIPER architecture in iOS",
-    author: "Knut Valen",
     published: new Date(2019, 10, 9),
     introduction: "Learn how to use clean architecture for your iOS apps.",
     slug: "viper-architecture",
