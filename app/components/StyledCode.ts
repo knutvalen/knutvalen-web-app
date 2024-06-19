@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const StyledCode = styled.code<{ $isOutput?: boolean }>`
   overflow-x: auto;
   font-family: ${(props) =>
-    props.$isOutput ? `var(--sf-mono)` : `var(--font-roboto-mono)`};
+    props.$isOutput ? `monospace` : `var(--font-roboto-mono)`};
   font-weight: ${(props) => props.theme.weights.normal};
   color: ${(props) => props.theme.colors.black};
   background-color: ${(props) => props.theme.colors.grey[50]};
