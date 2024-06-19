@@ -1,6 +1,6 @@
 "use client";
 
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import React from "react";
 import { Swoop } from "@/app/images/Swoop";
 import NextLink from "next/link";
@@ -32,9 +32,22 @@ const Nav = styled.nav`
   width: min(100%, ${1100 / 16}rem);
 `;
 
+const keyframeAnimation = keyframes`
+  0% {
+    transform: scale(70%) translateX(48px) translateY(40px);
+    opacity: 0;
+    filter: blur(8px);
+  }
+`;
+
+const delayToDisplay = 500;
+
 const Link = styled(NextLink)`
   display: inline-block;
   text-decoration: none;
+  will-change: transform, opacity;
+  animation: ${keyframeAnimation} 1000ms ease-in-out both;
+  animation-delay: ${delayToDisplay}ms;
 `;
 
 const Text = styled(StyledSpan)`
