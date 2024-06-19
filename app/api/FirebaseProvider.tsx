@@ -2,10 +2,6 @@
 
 import { Context, createContext, ReactNode, useContext } from "react";
 import { FirebaseApp, initializeApp } from "@firebase/app";
-import {
-  initializeAppCheck,
-  ReCaptchaEnterpriseProvider,
-} from "@firebase/app-check";
 
 const firebaseConfigDevelopment = {
   apiKey: "AIzaSyDmWmlzDad5wPysK_ULKf8Nzkf1SBel1cc",
@@ -30,14 +26,7 @@ const getFirebaseContext = (): Context<FirebaseApp> => {
   if (process.env.NODE_ENV === "development") {
     return createContext(initializeApp(firebaseConfigDevelopment));
   } else {
-    const app = initializeApp(firebaseConfig);
-    initializeAppCheck(app, {
-      provider: new ReCaptchaEnterpriseProvider(
-        process.env.RE_CAPTCHA_ENTERPRISE_SITE_KEY as string,
-      ),
-      isTokenAutoRefreshEnabled: true,
-    });
-    return createContext(app);
+    return createContext(initializeApp(firebaseConfig));
   }
 };
 
