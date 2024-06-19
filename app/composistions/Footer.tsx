@@ -11,8 +11,8 @@ const Wrapper = styled.footer`
   display: flex;
   flex-direction: column;
   gap: 8px;
-  justify-content: center;
-  align-items: center;
+  align-self: center;
+  width: min(100%, ${1100 / 16}rem);
   padding: 16px 32px;
 
   @media ${(props) => props.theme.queries.phoneAndSmaller} {
@@ -30,12 +30,9 @@ const Paragraph = styled(StyledParagraph)`
 
 const Links = styled.div`
   display: flex;
-  align-items: baseline;
-
-  @media ${(props) => props.theme.queries.phoneAndSmaller} {
-    flex-direction: column;
-    align-items: center;
-  }
+  flex-direction: column;
+  gap: 8px;
+  margin: 0 -12px;
 `;
 
 export const Footer = ({ currentYear }: { currentYear: number }) => {
@@ -44,7 +41,7 @@ export const Footer = ({ currentYear }: { currentYear: number }) => {
 
   return (
     <Wrapper>
-      <Paragraph>© {currentYear} Knut Valen.</Paragraph>
+      <Paragraph>&copy; {currentYear} Knut Valen</Paragraph>
       <Links>
         <Button
           size={"small"}
