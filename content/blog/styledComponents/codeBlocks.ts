@@ -102,23 +102,25 @@ export const codeBlock5 =
 
 // prettier-ignore
 export const codeBlock6 =
-`const colors = {
-  white: "hsl(0 0% 100%)",
+`import { css } from "styled-components";
+
+const colors = {
+  white: css\`hsl(0 0% 100%)\`,
   grey: {
-    50: "hsl(210 20% 98%)",
-    100: "hsl(210 40% 96%)",
-    200: "hsl(214 32% 91%)",
-    300: "hsl(213 27% 84%)",
-    400: "hsl(218 11% 65%)",
-    500: "hsl(220 9% 46%)",
-    600: "hsl(215 14% 34%)",
-    700: "hsl(217 19% 27%)",
-    800: "hsl(215 28% 17%)",
-    900: "hsl(221 39% 11%)",
-    950: "hsl(224 71% 4%)",
+    50: css\`hsl(210 20% 98%)\`,
+    100: css\`hsl(210 40% 96%)\`,
+    200: css\`hsl(214 32% 91%)\`,
+    300: css\`hsl(213 27% 84%)\`,
+    400: css\`hsl(218 11% 65%)\`,
+    500: css\`hsl(220 9% 46%)\`,
+    600: css\`hsl(215 14% 34%)\`,
+    700: css\`hsl(217 19% 27%)\`,
+    800: css\`hsl(215 28% 17%)\`,
+    900: css\`hsl(221 39% 11%)\`,
+    950: css\`hsl(224 71% 4%)\`,
   },
-  black: "hsl(0 0% 0%)",
-  primary: "hsl(217 91% 60%)",
+  black: css\`hsl(0 0% 0%)\`,
+  primary: css\`hsl(217 91% 60%)\`,
 };
 
 export const theme = {
