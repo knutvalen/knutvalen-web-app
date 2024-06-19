@@ -1,8 +1,5 @@
 name: CI/CD to Production
 
-env:
-  RE_CAPTCHA_ENTERPRISE_SITE_KEY: ${{ secrets.RE_CAPTCHA_ENTERPRISE_SITE_KEY }}
-
 on:
   push:
     branches:
