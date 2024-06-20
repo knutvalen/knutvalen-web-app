@@ -13,6 +13,7 @@ const Wrapper = styled.header`
   flex-direction: column;
   justify-content: space-between;
   min-height: 400px;
+  overflow: hidden;
   background: linear-gradient(
     to bottom,
     ${(props) => props.theme.colors.primary.normal},
@@ -45,7 +46,7 @@ const delayToDisplay = 500;
 const Link = styled(NextLink)`
   display: inline-block;
   text-decoration: none;
-  will-change: transform, opacity;
+  will-change: transform, opacity, filter;
   animation: ${keyframeAnimation} 1000ms ease-in-out both;
   animation-delay: ${delayToDisplay}ms;
 `;
@@ -69,6 +70,14 @@ const ImageWrapper = styled.div`
 
   @media ${(props) => props.theme.queries.prefersDarkTheme} {
     color: ${(props) => props.theme.colors.black};
+  }
+
+  @media ${(props) => props.theme.queries.tabletAndSmaller} {
+    transform: scaleX(120%);
+  }
+
+  @media ${(props) => props.theme.queries.phoneAndSmaller} {
+    transform: scaleX(160%);
   }
 `;
 
