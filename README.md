@@ -16,19 +16,19 @@ npm install
 npm run dev
 ```
 
-## CI/CD
+## Continuous Integration & Continuous Deployment
 
-Github Actions at [Github](https://github.com/knutvalen/knutvalen-web-app)
+Push to the "Master" git branch, and Github Actions at [Github](https://github.com/knutvalen/knutvalen-web-app) will build and deploy.
 
-## Project management
+## To-Do's
 
 Kanban board at [Jira](https://knutvalen.atlassian.net/jira)
 
-## Content
+## Adding content
 
-To add blog content, follow these steps:
+To add a blog post, follow these steps:
 
-1. Create a directory under `@/content/blog`.
-2. Add a React component to the newly created directory.
+1. Create a folder under `@/content/blog`.
+2. Add a React component to the newly created folder.
 3. Add a reference to the component in the object `slugs` in the file `@/content/blog/data.ts`.
 4. Add metadata for the blog post in the array `metadataForBlogPosts` in the file `@/content/blog/data.ts`.
