@@ -18,11 +18,11 @@ npm run dev
 
 ## Continuous Integration & Continuous Deployment
 
-Push to the "Master" git branch, and Github Actions at [Github](https://github.com/knutvalen/knutvalen-web-app) will build and deploy.
+[Vercel](https://vercel.com/knutvalens-projects/knutvalen-web-app) will build and deploy to https://knutvalen.dev.
 
 ## To-Do's
 
-Kanban board at [Jira](https://knutvalen.atlassian.net/jira)
+[Kanban](https://knutvalen.atlassian.net/jira) board at Jira.
 
 ## Adding content
 
