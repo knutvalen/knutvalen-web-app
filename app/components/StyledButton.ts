@@ -50,21 +50,6 @@ const core = css`
   }
 
   @media ${(props) => props.theme.queries.prefersDarkTheme} {
-    @media ${(props) => props.theme.queries.usesMouseOrTrackpad} {
-      &:enabled:hover {
-        transform: scale(102%);
-        transition: transform 100ms;
-      }
-    }
-
-    &:enabled:active {
-      box-shadow: ${(props) => props.theme.elevations.depressed};
-      transform: scale(98%);
-      transition:
-        box-shadow 50ms,
-        transform 50ms;
-    }
-
     &:disabled {
       color: ${(props) => props.theme.colors.grey[900]};
       background: linear-gradient(
