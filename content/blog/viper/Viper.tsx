@@ -13,6 +13,25 @@ import { StyledHeading2 } from "@/app/components/StyledHeading2";
 import { StyledCode } from "@/app/components/StyledCode";
 import { StyledUnorderedList } from "@/app/components/StyledUnorderedList";
 import { StyledListItem } from "@/app/components/StyledListItem";
+import { CodeWrapper } from "@/app/composistions/CodeWrapper";
+import {
+  codeBlock1,
+  codeBlock10,
+  codeBlock11,
+  codeBlock12,
+  codeBlock13,
+  codeBlock14,
+  codeBlock15,
+  codeBlock16,
+  codeBlock2,
+  codeBlock3,
+  codeBlock4,
+  codeBlock5,
+  codeBlock6,
+  codeBlock7,
+  codeBlock8,
+  codeBlock9,
+} from "@/content/blog/viper/codeBlocks.";
 
 const Wrapper = styled.div`
   flex: 1;
@@ -52,11 +71,6 @@ const UnorderedList = styled(StyledUnorderedList)`
   padding-bottom: 16px;
 `;
 
-const CodeWrapper = styled.pre`
-  display: flex;
-  padding-bottom: 16px;
-`;
-
 const InlineCode = styled(StyledCode)`
   padding: 0 4px;
 `;
@@ -92,7 +106,10 @@ export const Viper = () => {
         The entire code we will be going through is available at GitHub, but you
         can read along here without checking it out. You can clone it with
       </Paragraph>
-      <CodeWrapper>
+      <CodeWrapper
+        title={"terminal"}
+        copy={"git clone https://github.com/knutvalen/VIPER-architecture.git"}
+      >
         <CodeBlock>
           git clone https://github.com/knutvalen/VIPER-architecture.git
         </CodeBlock>
@@ -116,54 +133,8 @@ export const Viper = () => {
         <InlineCode>LightSideScreenTypes.swift</InlineCode> file we have defined
         a protocol for each VIPER part:
       </Paragraph>
-      <CodeWrapper>
-        {/* prettier-ignore */}
-        <CodeBlock>
-          {
-`import UIKit
-
-protocol LightSideScreenViewType {
-    var presenter: LightSideScreenPresenterType? { get set }
-    func set(title: String?)
-    func set(jediCode: LightSideScreenEntityType.JediCode?)
-    func set(loading isLoading: Bool)
-    func refreshJediList()
-}
-
-protocol LightSideScreenInteractorType {
-    var entity: LightSideScreenEntityType? { get set }
-    var webService: WebServiceType? { get set }
-    func getCode(completionHandler: @escaping JediCodeResponse, useCache: Bool)
-    func getJediList(completionHandler: @escaping JediListResponse, useCache: Bool)
-}
-
-protocol LightSideScreenPresenterType {
-    var view: LightSideScreenViewType? { get set }
-    var interactor: LightSideScreenInteractorType? { get set }
-    var router: LightSideScreenRouterType? { get set }
-    var jediList: [LightSideScreenEntityType.Jedi]? { get }
-    func viewDidAppear()
-    func viewDidDisappear()
-    func onDarkSideSelected()
-}
-
-protocol LightSideScreenEntityType {
-    typealias JediCode = CodeModel
-    typealias Jedi = JediModel
-    typealias Error = ErrorResponse
-    var jediCode: JediCode? { get set }
-    var jediList: [Jedi]? { get set }
-}
-
-protocol LightSideScreenRouterType {
-    static func create() -> UIViewController
-    func routeToDarkSideScreen(from view: LightSideScreenViewType?)
-}
-
-typealias JediCodeResponse = (_ jediCode: LightSideScreenEntityType.JediCode?, _ error: LightSideScreenEntityType.Error?) -> Void
-typealias JediListResponse = (_ jediList: [LightSideScreenEntityType.Jedi]?, _ error: LightSideScreenEntityType.Error?) -> Void`
-          }
-        </CodeBlock>
+      <CodeWrapper title={"LightSideScreenTypes.swift"} copy={codeBlock1}>
+        <CodeBlock>{codeBlock1}</CodeBlock>
       </CodeWrapper>
       <Paragraph>
         I like to call these protocols “types” because they define what a type
@@ -203,17 +174,8 @@ typealias JediListResponse = (_ jediList: [LightSideScreenEntityType.Jedi]?, _ e
         to each other. Now, let’s look at the Router implementation in{" "}
         <InlineCode>LightSideScreenRouter.swift</InlineCode>.
       </Paragraph>
-      <CodeWrapper>
-        {/* prettier-ignore */}
-        <CodeBlock>
-          {
-`import UIKit
-
-class LightSideScreenRouter: LightSideScreenRouterType {
-    ...
-}`
-          }
-        </CodeBlock>
+      <CodeWrapper title={"LightSideScreenRouter.swift"} copy={codeBlock2}>
+        <CodeBlock>{codeBlock2}</CodeBlock>
       </CodeWrapper>
       <Paragraph>
         All VIPER parts have its own type, and here you can see that the{" "}
@@ -223,49 +185,8 @@ class LightSideScreenRouter: LightSideScreenRouterType {
         <InlineCode>LightSideScreenRouter</InlineCode> the VIPER module is wired
         up and returns its View.
       </Paragraph>
-      <CodeWrapper>
-        {/* prettier-ignore */}
-        <CodeBlock>
-          {
-`class LightSideScreenRouter: LightSideScreenRouterType {
-    static func create() -> UIViewController {
-        let storyboard = UIStoryboard(name: "LightSideScreenView", bundle: .main)
-
-        if let view = storyboard.instantiateViewController(withIdentifier: "LightSideScreenView")
-            as? LightSideScreenView
-        {
-            let interactor = LightSideScreenInteractor()
-            let presenter = LightSideScreenPresenter()
-            let entity = LightSideScreenEntity()
-            let router = LightSideScreenRouter()
-
-            view.presenter = presenter
-            interactor.entity = entity
-            interactor.webService = FakeWebService()
-            presenter.view = view
-            presenter.interactor = interactor
-            presenter.router = router
-
-            return view
-        }
-
-        return UIViewController()
-    }
-
-    func routeToDarkSideScreen(from view: LightSideScreenViewType?) {
-        if let view = view as? UIViewController,
-            let navigationController = view.navigationController
-        {
-            navigationController.pushViewController(
-                DarkSideScreenRouter.create(),
-                animated: true
-            )
-        }
-    }
-
-}`
-          }
-        </CodeBlock>
+      <CodeWrapper title={"LightSideScreenRouter.swift"} copy={codeBlock3}>
+        <CodeBlock>{codeBlock3}</CodeBlock>
       </CodeWrapper>
       <Paragraph>
         We can now use this module as our initial screen by configuring it in
@@ -274,33 +195,8 @@ class LightSideScreenRouter: LightSideScreenRouterType {
         find the <InlineCode>scene(_:willConnectTo:options:)</InlineCode>{" "}
         function.
       </Paragraph>
-      <CodeWrapper>
-        {/* prettier-ignore */}
-        <CodeBlock>
-          {
-`class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-    var window: UIWindow?
-
-    func scene(
-        _ scene: UIScene,
-        willConnectTo session: UISceneSession,
-        options connectionOptions: UIScene.ConnectionOptions
-    ) {
-        guard let windowScene = scene as? UIWindowScene else { return }
-
-        let navigationController = UINavigationController(
-            rootViewController: LightSideScreenRouter.create()
-        )
-
-        let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = navigationController
-        window.makeKeyAndVisible()
-        self.window = window
-    }
-
-}`
-          }
-        </CodeBlock>
+      <CodeWrapper title={"SceneDelegate.swift"} copy={codeBlock4}>
+        <CodeBlock>{codeBlock4}</CodeBlock>
       </CodeWrapper>
       <Paragraph>
         This is where we use our Router’s <InlineCode>create()</InlineCode>{" "}
@@ -333,29 +229,8 @@ class LightSideScreenRouter: LightSideScreenRouterType {
         <InlineCode>LightSideScreenViewType</InlineCode> for implementing its
         VIPER type.
       </Paragraph>
-      <CodeWrapper>
-        {/* prettier-ignore */}
-        <CodeBlock>
-          {
-`import UIKit
-
-class LightSideScreenView: UIViewController {
-    ...
-}
-
-extension LightSideScreenView: LightSideScreenViewType {
-    ...
-}
-
-extension LightSideScreenView: UICollectionViewDataSource {
-    ...
-}
-
-extension LightSideScreenView: UICollectionViewDelegateFlowLayout {
-    ...
-}`
-          }
-        </CodeBlock>
+      <CodeWrapper title={"LightSideScreenView.swift"} copy={codeBlock5}>
+        <CodeBlock>{codeBlock5}</CodeBlock>
       </CodeWrapper>
       <Paragraph>
         When the Router returns its view controller in its{" "}
@@ -365,20 +240,8 @@ extension LightSideScreenView: UICollectionViewDelegateFlowLayout {
         and this is where we invoke the Presenter’s{" "}
         <InlineCode>viewDidAppear()</InlineCode> function.
       </Paragraph>
-      <CodeWrapper>
-        {/* prettier-ignore */}
-        <CodeBlock>
-          {
-`override func viewDidLoad() {
-    ...
-}
-
-override func viewDidAppear(_ animated: Bool) {
-    super.viewDidAppear(animated)
-    presenter?.viewDidAppear()
-}`
-          }
-        </CodeBlock>
+      <CodeWrapper title={"LightSideScreenView.swift"} copy={codeBlock6}>
+        <CodeBlock>{codeBlock6}</CodeBlock>
       </CodeWrapper>
       <Paragraph>
         This is an important step in the VIPER module lifecycle because this is
@@ -391,18 +254,8 @@ override func viewDidAppear(_ animated: Bool) {
         Presenter is responsible for acquiring the data needed for the View to
         display and it is responsible for using the Router.
       </Paragraph>
-      <CodeWrapper>
-        {/* prettier-ignore */}
-        <CodeBlock>
-          {
-`func viewDidAppear() {
-    view?.set(loading: true)
-    interactorIsLoading = ["onJediCode": true, "onJediList": true]
-    interactor?.getCode(completionHandler: onJediCode, useCache: true)
-    interactor?.getJediList(completionHandler: onJediList, useCache: true)
-}`
-          }
-        </CodeBlock>
+      <CodeWrapper title={"LightSideScreenPresenter.swift"} copy={codeBlock7}>
+        <CodeBlock>{codeBlock7}</CodeBlock>
       </CodeWrapper>
       <Paragraph>
         In the Presenter function <InlineCode>viewDidAppear()</InlineCode> we
@@ -414,34 +267,8 @@ override func viewDidAppear(_ animated: Bool) {
         concerned about is waiting for the data to arrive in its completion
         handlers.
       </Paragraph>
-      <CodeWrapper>
-        {/* prettier-ignore */}
-        <CodeBlock>
-          {
-`private func onJediCode(
-    _ jediCode: LightSideScreenEntityType.JediCode?,
-    _ error: LightSideScreenEntityType.Error?)
-{
-    onLoaded(function: "onJediCode")
-
-    if let jediCode = jediCode {
-        view?.set(jediCode: jediCode)
-    }
-}
-
-private func onJediList(
-    _ jediList: [LightSideScreenEntityType.Jedi]?,
-    _ error: LightSideScreenEntityType.Error?)
-{
-    onLoaded(function: "onJediList")
-
-    if let jediList = jediList {
-        lightSideScreenJediList = jediList
-        view?.refreshJediList()
-    }
-}`
-          }
-        </CodeBlock>
+      <CodeWrapper title={"LightSideScreenPresenter.swift"} copy={codeBlock8}>
+        <CodeBlock>{codeBlock8}</CodeBlock>
       </CodeWrapper>
       <Paragraph>
         The completion handlers <InlineCode>onJediCode(_:_:)</InlineCode> and{" "}
@@ -450,30 +277,21 @@ private func onJediList(
         The model will be not nil if the data was successfully loaded. So we use
         this optional model by safely unwrapping and adding it to our View with
       </Paragraph>
-      <CodeWrapper>
-        <CodeBlock>{`view?.set(jediCode: jediCode)`}</CodeBlock>
+      <CodeWrapper title={"LightSideScreenPresenter.swift"} copy={codeBlock9}>
+        <CodeBlock>{codeBlock9}</CodeBlock>
       </CodeWrapper>
       <Paragraph>
         and by invoking a refresh of the list of Jedi masters with
       </Paragraph>
-      <CodeWrapper>
-        <CodeBlock>{`view?.refreshJediList()`}</CodeBlock>
+      <CodeWrapper title={"LightSideScreenPresenter.swift"} copy={codeBlock10}>
+        <CodeBlock>{codeBlock10}</CodeBlock>
       </CodeWrapper>
       <Paragraph>
         When all the data is loaded we finish the loading animation on the View
         so that the data can be displayed:
       </Paragraph>
-      <CodeWrapper>
-        {/* prettier-ignore */}
-        <CodeBlock>
-          {
-`private func onLoaded(function: String) {
-    ...
-    view?.set(loading: false)
-    ...
-}`
-          }
-        </CodeBlock>
+      <CodeWrapper title={"LightSideScreenPresenter.swift"} copy={codeBlock11}>
+        <CodeBlock>{codeBlock11}</CodeBlock>
       </CodeWrapper>
       <Paragraph>
         The Presenter is also reacting to user events. When the user clicks the
@@ -483,15 +301,8 @@ private func onJediList(
         function that in turn will invoke the Router’s{" "}
         <InlineCode>routeToDarkSideScreen(from:)</InlineCode> function.
       </Paragraph>
-      <CodeWrapper>
-        {/* prettier-ignore */}
-        <CodeBlock>
-          {
-`func onDarkSideSelected() {
-    router?.routeToDarkSideScreen(from: view)
-}`
-          }
-        </CodeBlock>
+      <CodeWrapper title={"LightSideScreenPresenter.swift"} copy={codeBlock12}>
+        <CodeBlock>{codeBlock12}</CodeBlock>
       </CodeWrapper>
       <Paragraph>
         This will push the dark-side VIPER module’s view controller onto the
@@ -506,73 +317,24 @@ private func onJediList(
         the Presenter to handle.
       </Paragraph>
       {/* prettier-ignore */}
-      <CodeWrapper>
+      <CodeWrapper title={"LightSideScreenInteractor.swift"} copy={codeBlock13}>
         <CodeBlock>
-          {
-`class LightSideScreenInteractor {
-    ...
-}
-
-extension LightSideScreenInteractor: LightSideScreenInteractorType {
-    ...
-
-    func getJediList(completionHandler: @escaping JediListResponse, useCache: Bool) {
-        if let cache = entity?.jediList,
-            useCache == true
-        {
-            completionHandler(cache, nil)
-            return
-        }
-
-        webService?.request(path: "light-side-service/jedi-list", method: "GET") {
-            (result: Result<[LightSideScreenEntityType.Jedi]?, LightSideScreenEntityType.Error>) in
-            switch result {
-            case let .success(jediList):
-                self.entity?.jediList = jediList
-                completionHandler(jediList, nil)
-
-            case let .failure(error):
-                completionHandler(nil, error)
-            }
-        }
-    }
-
-    ...
-}`
-          }
+          {codeBlock13}
         </CodeBlock>
       </CodeWrapper>
       <Paragraph>
         When the Interactor gets data, it decodes it to an entity type and
         caches it in the Entity:
       </Paragraph>
-      <CodeWrapper>
-        {/* prettier-ignore */}
-        <CodeBlock>
-          {
-`case let .success(jediList):
-    self.entity?.jediList = jediList
-    completionHandler(jediList, nil)`
-          }
-        </CodeBlock>
+      <CodeWrapper title={"LightSideScreenInteractor.swift"} copy={codeBlock14}>
+        <CodeBlock>{codeBlock14}</CodeBlock>
       </CodeWrapper>
       <Paragraph>
         An entity type is a typealias for a data structure/model referenced in
         the Entity:
       </Paragraph>
-      <CodeWrapper>
-        {/* prettier-ignore */}
-        <CodeBlock>
-          {
-`protocol LightSideScreenEntityType {
-    typealias JediCode = CodeModel
-    typealias Jedi = JediModel
-    typealias Error = ErrorResponse
-    var jediCode: JediCode? { get set }
-    var jediList: [Jedi]? { get set }
-}`
-          }
-        </CodeBlock>
+      <CodeWrapper title={"LightSideScreenTypes.swift"} copy={codeBlock15}>
+        <CodeBlock>{codeBlock15}</CodeBlock>
       </CodeWrapper>
       <Paragraph>
         The Entity is responsible for keeping references to models and storing
@@ -583,18 +345,8 @@ extension LightSideScreenInteractor: LightSideScreenInteractorType {
         there is available data present and return this instantly instead of
         doing a lengthy network request:
       </Paragraph>
-      <CodeWrapper>
-        {/* prettier-ignore */}
-        <CodeBlock>
-          {
-`if let cache = entity?.jediList,
-    useCache == true
-{
-    completionHandler(cache, nil)
-    return
-}`
-          }
-        </CodeBlock>
+      <CodeWrapper title={"LightSideScreenInteractor.swift"} copy={codeBlock16}>
+        <CodeBlock>{codeBlock16}</CodeBlock>
       </CodeWrapper>
       <Heading2>Wrapping up</Heading2>
       <Paragraph>
