@@ -64,7 +64,7 @@ const Text = styled(StyledSpan)`
 
 const ImageWrapper = styled.div`
   width: 100%;
-  height: 90px;
+  height: 300px;
   transform: translateY(1px);
   color: ${(props) => props.theme.colors.white};
 
@@ -72,12 +72,18 @@ const ImageWrapper = styled.div`
     color: ${(props) => props.theme.colors.black};
   }
 
+  @media ${(props) => props.theme.queries.laptopAndSmaller} {
+    height: 250px;
+  }
+
   @media ${(props) => props.theme.queries.tabletAndSmaller} {
-    transform: scaleX(120%);
+    height: 200px;
+    transform: scaleX(140%);
   }
 
   @media ${(props) => props.theme.queries.phoneAndSmaller} {
-    transform: scaleX(160%);
+    height: 150px;
+    transform: scaleX(170%);
   }
 `;
 
