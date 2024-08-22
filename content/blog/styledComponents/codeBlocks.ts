@@ -239,9 +239,9 @@ const Main = styled.main\`
 
 const Paragraph = styled.p<{ $isPrimaryColored: boolean }>\`
   color: \${(props) =>
-  props.$isPrimaryColored
-    ? props.theme.colors.primary
-    : props.theme.colors.grey[500]};
+    props.$isPrimaryColored
+      ? props.theme.colors.primary
+      : props.theme.colors.grey[500]};
 \`;
 
 const Page = () => {
