@@ -18,7 +18,7 @@ npm run dev
 
 ## Continuous Integration & Continuous Deployment
 
-[Vercel](https://vercel.com/knutvalens-projects/knutvalen-web-app) will build and deploy to https://knutvalen.dev.
+Vercel will build and deploy to https://knutvalen.dev.
 
 ## To-Do's
 

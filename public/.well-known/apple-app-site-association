@@ -1,0 +1,15 @@
+{
+  "applinks": {
+      "details": [
+           {
+             "appID": "dev.knutvalen.SpaceX-Developments",
+             "components": [
+               {
+                  "/": "/launch",
+                 "?": { "id": "?*" }
+               }
+             ]
+           }
+       ]
+   }
+}
