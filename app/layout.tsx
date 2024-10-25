@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { inter, robotoMono } from "@/app/styles/fonts";
 import { ThemeProvider } from "@/app/styles/ThemeProvider";
 import { Header } from "@/app/composistions/Header";
@@ -15,6 +15,13 @@ import { LayoutProvider } from "@/app/LayoutProvider";
 export const metadata: Metadata = {
   title: "Knut Valen",
 };
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: 'hsl(217 91% 60%)' },
+    { media: '(prefers-color-scheme: dark)', color: 'hsl(0 0% 0%)' },
+  ],
+}
 
 const RootLayout = async ({ children }: { children: ReactNode }) => {
   const cookieStore = await cookies();
