@@ -1,4 +1,5 @@
 "use client";
+import { use } from "react";
 
 import { getBlogPostComponent, getMetadata, Props } from "@/app/api/BlogApi";
 import styled from "styled-components";
@@ -24,7 +25,8 @@ const SubHeading1 = styled(StyledParagraph)`
   font-weight: ${(props) => props.theme.weights.mediumSmall};
 `;
 
-const Page = ({ params }: { params: { slug: Props["slug"] } }) => {
+const Page = (props: { params: Promise<{ slug: Props["slug"] }> }) => {
+  const params = use(props.params);
   const metadata = getMetadata({ slug: params.slug });
   const Component = getBlogPostComponent({ slug: metadata.slug });
 

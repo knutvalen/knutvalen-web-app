@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 };
 
 const RootLayout = async ({ children }: { children: ReactNode }) => {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const consent = await hasCookie("necessary", cookieStore);
   const googleAnalyticsCookie = await getCookie("googleAnalytics", cookieStore);
 

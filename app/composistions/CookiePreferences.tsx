@@ -8,6 +8,7 @@ import { X } from "react-feather";
 import { useEffect, useState } from "react";
 import { getAllCookies, setCookies } from "@/app/serverActions";
 import { Button } from "@/app/components/Button";
+import VisuallyHidden from "@/app/components/VisuallyHidden";
 
 const Overlay = styled(Dialog.Overlay)`
   position: fixed;
@@ -17,8 +18,7 @@ const Overlay = styled(Dialog.Overlay)`
   bottom: 0;
   display: flex;
   justify-content: center;
-  //backdrop-filter: blur(8px) brightness(50%);
-  background-color: hsl(0 0% 0% / 0.5);
+  backdrop-filter: blur(8px) brightness(50%);
 `;
 
 const Content = styled(Dialog.Content)`
@@ -135,9 +135,9 @@ export const CookiePreferences = () => {
     setPreferencesOpen(false);
   };
 
-  const toggleAll = (consent: boolean) => {
-    setGoogleAnalytics(consent);
-  };
+  // const toggleAll = (consent: boolean) => {
+  //   setGoogleAnalytics(consent);
+  // };
 
   return (
     <Dialog.Root open={isPreferencesOpen} onOpenChange={setPreferencesOpen}>
@@ -145,10 +145,15 @@ export const CookiePreferences = () => {
         <Overlay>
           <Content>
             <StyledHeader>
+              <VisuallyHidden>
+                <Dialog.Title>Cookie preferences</Dialog.Title>
+                <Dialog.Description></Dialog.Description>
+              </VisuallyHidden>
               <StyledHeading2>Cookie preferences</StyledHeading2>
               <Dialog.Close asChild={true}>
                 <Button size={"medium"} variant={"text"}>
                   <X />
+                  <VisuallyHidden>Close</VisuallyHidden>
                 </Button>
               </Dialog.Close>
             </StyledHeader>

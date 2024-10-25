@@ -6,7 +6,7 @@ import { Cookie } from "@/app/models/Cookie";
 import { CookieNames } from "@/app/models/CookieNames";
 
 export const setCookies = async (_cookies: Cookie[]) => {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
 
   _cookies.forEach((cookie) => {
     cookieStore.set({
@@ -18,7 +18,7 @@ export const setCookies = async (_cookies: Cookie[]) => {
 };
 
 export const getAllCookies = async (): Promise<Cookie[]> => {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
 
   return cookieStore.getAll().map((cookie) => ({
     name: cookie.name as CookieNames,
