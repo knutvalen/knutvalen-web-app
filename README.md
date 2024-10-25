@@ -7,7 +7,7 @@ Web app for https://knutvalen.dev.
 1. Install dependencies:
 
 ```shell
-npm install
+npm install --force
 ```
 
 2. Start the app:
