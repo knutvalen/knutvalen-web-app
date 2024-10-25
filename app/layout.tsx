@@ -18,10 +18,10 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: 'hsl(217 91% 60%)' },
-    { media: '(prefers-color-scheme: dark)', color: 'hsl(0 0% 0%)' },
+    { media: "(prefers-color-scheme: light)", color: "hsl(217 91% 60%)" },
+    { media: "(prefers-color-scheme: dark)", color: "hsl(0 0% 0%)" },
   ],
-}
+};
 
 const RootLayout = async ({ children }: { children: ReactNode }) => {
   const cookieStore = await cookies();
