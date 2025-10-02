@@ -13,20 +13,24 @@
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.2",
     "firebase": "^11.0.1",
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
-    "next": "15.4.6",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "next": "15.5.4",
     "react-feather": "^2.0.10",
     "styled-components": "^6.1.13"
   },
   "devDependencies": {
     "typescript": "^5",
     "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
+    "@types/react": "19.2.0",
+    "@types/react-dom": "19.2.0",
     "eslint": "^9",
-    "eslint-config-next": "15.4.6",
+    "eslint-config-next": "15.5.4",
     "eslint-config-prettier": "10.1.8",
     "prettier": "3.3.3"
+  },
+  "overrides": {
+    "@types/react": "19.2.0",
+    "@types/react-dom": "19.2.0"
   }
 }
